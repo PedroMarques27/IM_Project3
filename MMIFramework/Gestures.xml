@@ -20,4 +20,9 @@
     <NAME>Raise</NAME>
     <SEMANTIC>Raise</SEMANTIC>
   </Gesture>
+  <Gesture>
+    <ID>4</ID>
+    <NAME>Thumb</NAME>
+    <SEMANTIC>Thumb</SEMANTIC>
+  </Gesture>
 </Gestures>

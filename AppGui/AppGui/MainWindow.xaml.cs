@@ -38,10 +38,10 @@ namespace AppGui
 
             //Creates the ChomeDriver object, Executes tests on Google Chrome
             webDriver = new ChromeDriver(path + @"/driver/");
-            webDriver.Navigate().GoToUrl("https://www.pokernow.club/start-game");
+           
 
 
-            mmiC = new MmiCommunication("localhost", 8000, "User1", "GUI");
+            mmiC = new MmiCommunication("localhost", 9876, "User1", "GUI");
             mmiC.Message += MmiC_Message;
             mmiC.Start();
 
@@ -49,7 +49,7 @@ namespace AppGui
             //init LifeCycleEvents..
             lce = new LifeCycleEvents("APP", "TTS", "User1", "na", "command"); // LifeCycleEvents(string source, string target, string id, string medium, string mode
             // MmiCommunication(string IMhost, int portIM, string UserOD, string thisModalityName)
-            mmic = new MmiCommunication("localhost", 8000, "User1", "GUI");
+            mmic = new MmiCommunication("localhost", 9876, "User1", "GUI");
 
         }
 
@@ -62,7 +62,7 @@ namespace AppGui
 
             string command= json.recognized[1].ToString();
             int commandId = int.Parse(json.recognized[0].ToString());
-            Console.WriteLine(json.recognized[2].ToString());
+            Console.WriteLine(json.ToString());
 
             //this.ACTION.Content = String.Format("Received: {0}-{1}, with confidence of {2}\n", command, commandId, json.recognized[2].ToString());
             
