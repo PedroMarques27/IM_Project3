@@ -6,18 +6,22 @@ import scxmlgen.interfaces.IModality;
  *
  * @author nunof
  */
-public enum SecondMod implements IModality{
+public enum Gestures implements IModality{
 
-    RED("[color][RED]",1500),
-    BLUE("[color][BLUE]",1500),
-    YELLOW("[color][YELLOW]",1500);
+    BOTH_UP("[action][BOTH]",1500),
+    RAISE("[action][RAISE]",1500),
+    BET("[action][BET]",1500),
+    FOLD("[action][FOLD]",1500),
+    CHECK("[action][CHECK]",1500)
     ;
-    
+
+
+
     private String event;
     private int timeout;
 
 
-    SecondMod(String m, int time) {
+    Gestures(String m, int time) {
         event=m;
         timeout=time;
     }

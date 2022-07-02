@@ -6,11 +6,22 @@ package scxmlgen.Modalities;
 
 import scxmlgen.interfaces.IModality; 
 
-public enum Speech implements IModality{  
+public enum Speech implements IModality{
 
-	SQUARE("[shape][SQUARE]",1500),
-        TRIANGLE("[shape][TRIANGLE]",1500),
-        CIRCLE("[shape][CIRCLE]",1500);
+	SEAT("[action][SEAT]",1500),
+	CHAT("[action][CHAT]",1500),
+	PAUSE("[action][PAUSE]",1500),
+	END("[action][END]",1500),
+	START("[action][START]",1500),
+	PLAYERS("[action][PLAYERS]",1500),
+	OPTIONS("[action][OPTIONS]",1500),
+	BETVALUE("[action][BETVALUE]",1500),
+	RAISE("[action][RAISE]",1500),
+	BET("[action][BET]",1500),
+	FOLD("[action][FOLD]",1500),
+	CHECK("[action][CHECK]",1500);
+
+
 
 
 private String event; 

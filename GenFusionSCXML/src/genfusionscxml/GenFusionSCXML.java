@@ -7,9 +7,9 @@ package genfusionscxml;
 
 import java.io.IOException;
 import scxmlgen.Fusion.FusionGenerator;
+import scxmlgen.Modalities.Gestures;
 import scxmlgen.Modalities.Output;
 import scxmlgen.Modalities.Speech;
-import scxmlgen.Modalities.SecondMod;
 
 /**
  *
@@ -23,18 +23,23 @@ public class GenFusionSCXML {
     public static void main(String[] args) throws IOException {
 
     FusionGenerator fg = new FusionGenerator();
-  
-    
-    fg.Sequence(Speech.SQUARE, SecondMod.RED, Output.SQUARE_RED);
-    fg.Sequence(Speech.SQUARE, SecondMod.BLUE, Output.SQUARE_BLUE);
-    fg.Sequence(Speech.SQUARE, SecondMod.YELLOW, Output.SQUARE_YELLOW);
-    fg.Complementary(Speech.TRIANGLE, SecondMod.RED, Output.TRIANGLE_RED);
-    fg.Complementary(Speech.TRIANGLE, SecondMod.BLUE, Output.TRIANGLE_BLUE);
-    fg.Complementary(Speech.TRIANGLE, SecondMod.YELLOW, Output.TRIANGLE_YELLOW);
-    fg.Complementary(Speech.CIRCLE, SecondMod.RED, Output.CIRCLE_RED);
-    fg.Complementary(Speech.CIRCLE, SecondMod.BLUE, Output.CIRCLE_BLUE);
-    fg.Complementary(Speech.CIRCLE, SecondMod.YELLOW, Output.CIRCLE_YELLOW);
-    
+    fg.Single(Speech.SEAT, Output.SEAT);
+    fg.Single(Speech.CHAT, Output.CHAT);
+    fg.Single(Speech.PAUSE, Output.PAUSE);
+    fg.Single(Speech.END, Output.END);
+    fg.Single(Speech.START, Output.START);
+
+    fg.Complementary(Gestures.BOTH_UP, Speech.PLAYERS, Output.PLAYERS);
+    fg.Complementary(Gestures.BOTH_UP, Speech.OPTIONS, Output.OPTIONS);
+    fg.Complementary(Gestures.RAISE, Speech.BETVALUE, Output.RAISE_VALUE);
+
+    fg.Redundancy(Speech.RAISE, Gestures.RAISE, Output.RAISE);
+    fg.Redundancy(Speech.BET, Gestures.BET, Output.BET);
+    fg.Redundancy(Speech.FOLD, Gestures.FOLD, Output.FOLD);
+    fg.Redundancy(Speech.CHECK, Gestures.CHECK, Output.CHECK);
+
+
+
     //fg.Single(Speech.CIRCLE, Output.CIRCLE);  //EXAMPLE
     //fg.Redundancy(Speech.CIRCLE, SecondMod.CIRCLE, Output.CIRCLE);  //EXAMPLE
     
