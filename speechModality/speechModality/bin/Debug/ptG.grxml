@@ -13,6 +13,7 @@
         <ruleref uri="#Iniciar"/>
         <tag>out.Iniciar=rules.latest();</tag>
       </item>
+      
       <item>
         <ruleref uri="#Apostar"/>
         <tag>out.Apostar=rules.latest();</tag>
@@ -22,6 +23,7 @@
         <ruleref uri="#Desistir"/>
         <tag>out.Desistir=rules.latest();</tag>
       </item>
+      
       <item>
         <ruleref uri="#Passar"/>
         <tag>out.Passar=rules.latest();</tag>
@@ -31,42 +33,44 @@
         <ruleref uri="#Igualar"/>
         <tag>out.Igualar=rules.latest();</tag>
       </item>
-    <item>
+      
+      <item>
         <ruleref uri="#Sentar"/>
         <tag>out.Sentar=rules.latest();</tag>
       </item>
+      
       <item>
         <ruleref uri="#Jogadores"/>
         <tag>out.Jogadores=rules.latest();</tag>
       </item>
+      
       <item>
         <ruleref uri="#Opções"/>
         <tag>out.Opções=rules.latest();</tag>
       </item>
+      
       <item>
         <ruleref uri="#Ausentar"/>
         <tag>out.Ausentar=rules.latest();</tag>
       </item>
+      
     <item>
         <ruleref uri="#Despausar"/>
         <tag>out.Despausar=rules.latest();</tag>
-      </item>
+    </item>
+      
     <item>
         <ruleref uri="#Terminar"/>
         <tag>out.Terminar=rules.latest();</tag>
-      </item>
+    </item>
+      
     <item>
         <ruleref uri="#VoiceChat"/>
         <tag>out.VoiceChat=rules.latest();</tag>
-      </item>
-      <item>
-        <ruleref uri="#Estado"/>
-        <tag>out.Estado=rules.latest();</tag>
-      </item>
-    </one-of>
+    </item>    
+  </one-of>
     
     <item repeat="0-1">por favor</item>
-    
     <item repeat="0-1">se faz favor</item>
       
 	</rule>
@@ -103,9 +107,6 @@
     <tag>out="OPTIONS"</tag>
   </rule>
   
-  
-  
-  
   <rule id="Igualar" scope="public">
     <example> quero igualar</example>
     
@@ -137,8 +138,7 @@
       <item>passo</item>
     </one-of>
     <tag>out="CHECK"</tag>
-  </rule>
-  
+  </rule> 
 
   <rule id="Apostar" scope="public">
     <example> quero apostar  cinco euros</example>
@@ -158,7 +158,6 @@
     <item repeat="0-1">chips</item>
 
    <tag> out = "RAISE:"+out.Dinheiro</tag>
-    
   </rule>
   
   
@@ -190,6 +189,7 @@
    <tag> out = "END"</tag>
     
   </rule>
+  
   <rule id="VoiceChat" scope="public">
     <example> Liga a câmara</example>
     <example> Inicia o voicechat</example>
@@ -211,11 +211,12 @@
       <item>a câmara</item>
       <item>o voicechat</item>
     </one-of>
-   <tag> out =  "VOICECHAT:"+out.Value</tag>
+   <tag> out =  "CHAT"</tag>
     
   </rule>
+  
   <rule id="Despausar" scope="public">
-    <example> Mete o jogo a dar </example>
+    <example> Mete o jogo</example>
 
     <one-of>
       <item>tira a pausa</item>
@@ -223,7 +224,7 @@
       <item>continua</item>
     </one-of>
  
-   <tag> out = "UNPAUSE"</tag>
+   <tag> out = "RESUME"</tag>
     
   </rule>
 
@@ -243,13 +244,11 @@
       <ruleref uri="#Dinheiro"/>
       <tag> out.Banco = rules.Dinheiro</tag>
     </item>
+    <item>com</item>
     <item>
-      com
+      <ruleref uri="#Dinheiro"/>
+      <tag> out.Dinheiro = rules.Dinheiro</tag>
     </item>
-      <item>
-        <ruleref uri="#Dinheiro"/>
-        <tag> out.Dinheiro = rules.Dinheiro</tag>
-      </item>
     
     <item repeat="0-1">euros</item>
     <item repeat="0-1">moedas</item>
@@ -271,22 +270,9 @@
       <item>os novos jogadores</item>
     </one-of>
    
-    
     <tag>out="PLAYERS"</tag>
   </rule>
   
-  <rule id="Estado" scope="public">
-    <example> qual é o estado do jogo</example>
-
-    <one-of>
-      <item>diz-me qual o estado do</item>
-      <item>como está o</item>
-    </one-of>
-
-    <item repeat="0-1">jogo</item>
-     
-    <tag>out="STATUS"</tag>
-  </rule>
   <rule id="Dinheiro">
     <example> cinco </example>
     <example> dez </example>
@@ -408,11 +394,8 @@
       </item>
       <item>
         dez mil <tag> out = 10000; </tag>
-      </item>
-    
-     
+      </item>   
     </one-of>
-    
   </rule>
 
 </grammar>
