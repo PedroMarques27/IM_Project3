@@ -49,7 +49,7 @@ namespace AppGui
             //init LifeCycleEvents..
             lce = new LifeCycleEvents("APP", "TTS", "User1", "na", "command"); // LifeCycleEvents(string source, string target, string id, string medium, string mode
             // MmiCommunication(string IMhost, int portIM, string UserOD, string thisModalityName)
-            mmic = new MmiCommunication("localhost", 9876, "User1", "GUI");
+            mmic = new MmiCommunication("localhost", 8000, "User1", "GUI");
 
         }
 

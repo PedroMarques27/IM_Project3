@@ -8,11 +8,11 @@ import scxmlgen.interfaces.IModality;
 
 public enum Speech implements IModality{
 
-	SEAT("[action][SEAT]",1500),
+	SIT("[action][SIT]",1500),
 	CHAT("[action][CHAT]",1500),
 	PAUSE("[action][PAUSE]",1500),
 	END("[action][END]",1500),
-	START("[action][START]",1500),
+	RESUME("[action][RESUME]",1500),
 	PLAYERS("[action][PLAYERS]",1500),
 	OPTIONS("[action][OPTIONS]",1500),
 	BETVALUE("[action][BETVALUE]",1500),
