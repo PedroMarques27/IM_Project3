@@ -8,11 +8,11 @@ import scxmlgen.interfaces.IModality;
  */
 public enum Gestures implements IModality{
 
-    BOTH_UP("[action][BOTH]",1500),
-    RAISE("[action][RAISE]",1500),
-    BET("[action][BET]",1500),
-    FOLD("[action][FOLD]",1500),
-    CHECK("[action][CHECK]",1500);
+    BOTH("[0][Both]",1500),
+    RAISE("[3][Raise]",1500),
+    BET("[4][Thumb]",1500),
+    FOLD("[2][Fold]",1500),
+    CHECK("[1][Check]",1500);
 
 
 

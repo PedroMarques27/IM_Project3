@@ -25,8 +25,8 @@ public class GenFusionSCXML {
     FusionGenerator fg = new FusionGenerator();
 
 
-    fg.Complementary(Gestures.BOTH_UP, Speech.PLAYERS, Output.PLAYERS);
-    fg.Complementary(Gestures.BOTH_UP, Speech.OPTIONS, Output.OPTIONS);
+    fg.Complementary(Gestures.BOTH, Speech.PLAYERS, Output.PLAYERS);
+    fg.Complementary(Gestures.BOTH, Speech.OPTIONS, Output.OPTIONS);
     fg.Complementary(Gestures.RAISE, Speech.BETVALUE, Output.RAISE_VALUE);
 
     fg.Redundancy(Speech.RAISE, Gestures.RAISE, Output.RAISE);
