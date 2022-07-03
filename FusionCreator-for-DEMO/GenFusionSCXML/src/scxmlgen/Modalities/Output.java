@@ -19,6 +19,7 @@ public enum Output implements IOutput{
     PAUSE("[action][PAUSE]"),
     END("[action][END]"),
     START("[action][START]"),
+    RESUME("[action][RESUME]"),
     ;
     
     

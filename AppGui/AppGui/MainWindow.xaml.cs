@@ -90,7 +90,10 @@ namespace AppGui
                             }
                         }
                         catch { }
-                        Console.WriteLine("------------");
+                      
+                        break;
+                    case "PLAYERS": //  both arms up
+                 
                         try
                         {
                             IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='config-top-tabs']//button"));
