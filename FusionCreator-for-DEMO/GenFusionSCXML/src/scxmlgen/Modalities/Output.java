@@ -15,7 +15,10 @@ public enum Output implements IOutput{
     RAISE_VALUE_MIN("[action][RAISE][value][MIN]"),
     RAISE_VALUE_DUP("[action][RAISE][value][DUPL]"),
     RAISE_VALUE_ALL("[action][RAISE][value][ALL]"),
-    BOTH("[action][BOTH]")
+    CHAT("[action][CHAT]"),
+    PAUSE("[action][PAUSE]"),
+    END("[action][END]"),
+    START("[action][START]"),
     ;
     
     

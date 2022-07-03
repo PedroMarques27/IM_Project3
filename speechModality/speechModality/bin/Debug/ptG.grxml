@@ -9,7 +9,7 @@
       <item>Ema por favor</item>
     </one-of>
     <one-of>
-       <item>
+      <item>
         <ruleref uri="#Iniciar"/>
         <tag>out.Iniciar=rules.latest();</tag>
       </item>
@@ -54,26 +54,73 @@
         <tag>out.Ausentar=rules.latest();</tag>
       </item>
       
-    <item>
+      <item>
         <ruleref uri="#Despausar"/>
         <tag>out.Despausar=rules.latest();</tag>
-    </item>
+      </item>
       
-    <item>
+      <item>
         <ruleref uri="#Terminar"/>
         <tag>out.Terminar=rules.latest();</tag>
-    </item>
+      </item>
       
-    <item>
+      <item>
         <ruleref uri="#VoiceChat"/>
         <tag>out.VoiceChat=rules.latest();</tag>
-    </item>    
-  </one-of>
+      </item>
+
+      <item>
+        <ruleref uri="#ApTudo"/>
+        <tag>out.ApTudo=rules.latest();</tag>
+      </item>
+      <item>
+        <ruleref uri="#Dupl"/>
+        <tag>out.Dupl=rules.latest();</tag>
+      </item>
+    </one-of>
     
     <item repeat="0-1">por favor</item>
     <item repeat="0-1">se faz favor</item>
       
 	</rule>
+
+  <rule id="ApTudo" scope="public">
+    <example> aposto tudo</example>
+
+    <one-of>
+      <item>quero apostar tudo</item>
+      <item>aposto tudo</item>
+      <item>tudo</item>
+    </one-of>
+
+    <tag>out="ALL_IN"</tag>
+  </rule>
+
+  <rule id="Dupl" scope="public">
+    <example>duplico a aposta</example>
+
+    <one-of>
+      <item>quero duplicar a aposta</item>
+      <item>quero duplicar</item>
+      <item>duplicar</item>
+      <item>duplico a aposta</item>
+    </one-of>
+
+    <tag>out="DUPL"</tag>
+  </rule>
+
+  <rule id="ApMin" scope="public">
+    <example>aposto o mínimo</example>
+
+    <one-of>
+      <item>quero apostar o mínimo</item>
+      <item>quero o mínimo</item>
+      <item>mínimo</item>
+      <item>aposto o mínimo</item>
+    </one-of>
+
+    <tag>out="MIN"</tag>
+  </rule>
 
   <rule id="Iniciar" scope="public">
       <example> começa um novo jogo</example>
