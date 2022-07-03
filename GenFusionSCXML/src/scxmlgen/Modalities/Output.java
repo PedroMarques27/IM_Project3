@@ -8,14 +8,14 @@ public enum Output implements IOutput{
     
 
     SEAT("[action][SIT]"),
-    CHAT("[action][SIT]"),
-    PAUSE("[action][SIT]"),
-    END("[action][SIT]"),
-    START("[action][SIT]"),
-    RAISE("[action][SIT]"),
-    BET("[action][SIT]"),
-    FOLD("[action][SIT]"),
-    CHECK("[action][SIT]"),
+    CHAT("[action][CHAT]"),
+    PAUSE("[action][PAUSE]"),
+    END("[action][END]"),
+    START("[action][START]"),
+    RAISE("[action][RAISE]"),
+    BET("[action][BET]"),
+    FOLD("[action][FOLD]"),
+    CHECK("[action][CHECK]"),
     PLAYERS("[action][BOTH][type][PLAYERS]"),
     OPTIONS("[action][BOTH][type][OPTIONS]"),
     RAISE_VALUE("[action][RAISE][value][10]")

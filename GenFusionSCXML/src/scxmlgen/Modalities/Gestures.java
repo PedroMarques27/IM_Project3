@@ -12,8 +12,7 @@ public enum Gestures implements IModality{
     RAISE("[action][RAISE]",1500),
     BET("[action][BET]",1500),
     FOLD("[action][FOLD]",1500),
-    CHECK("[action][CHECK]",1500)
-    ;
+    CHECK("[action][CHECK]",1500);
 
 
 
