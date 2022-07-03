@@ -52,8 +52,10 @@ namespace AppGui
         private void MmiC_Message(object sender, MmiEventArgs e)
         {
             Console.WriteLine(e.Message);
-            Console.WriteLine("-------------------------");
-            Console.WriteLine(e.ToString());
+            var doc = XDocument.Parse(e.Message);
+            var com = doc.Descendants("command").LastOrDefault().Value;
+            dynamic json = JsonConvert.DeserializeObject(com);
+            Console.WriteLine(com.ToString());
 
 
         }
