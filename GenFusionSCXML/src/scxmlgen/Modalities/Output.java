@@ -7,19 +7,17 @@ import scxmlgen.interfaces.IOutput;
 public enum Output implements IOutput{
     
 
-    SEAT("[action][SIT]"),
-    CHAT("[action][CHAT]"),
-    PAUSE("[action][PAUSE]"),
-    END("[action][END]"),
-    START("[action][START]"),
+
     RAISE("[action][RAISE]"),
     BET("[action][BET]"),
     FOLD("[action][FOLD]"),
     CHECK("[action][CHECK]"),
     PLAYERS("[action][BOTH][type][PLAYERS]"),
     OPTIONS("[action][BOTH][type][OPTIONS]"),
-    RAISE_VALUE("[action][RAISE][value][10]")
-    ;
+    RAISE_VALUE_MIN("[action][RAISE][value][MIN]"),
+    RAISE_VALUE_DUP("[action][RAISE][value][DUPL]"),
+    RAISE_VALUE_ALL("[action][RAISE][value][ALL]"),
+    BOTH("[action][BOTH]");
 
     
     private String event;

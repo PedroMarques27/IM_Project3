@@ -24,10 +24,17 @@ public class GenFusionSCXML {
 
     FusionGenerator fg = new FusionGenerator();
 
-
+    fg.Single(Gestures.BOTH, Output.BOTH);
+    fg.Single(Speech.PLAYERS, Output.PLAYERS);
+    fg.Single(Speech.OPTIONS, Output.OPTIONS);
+    fg.Single(Speech.ALL_IN, Output.RAISE_VALUE_ALL);
+    fg.Single(Speech.MIN, Output.RAISE_VALUE_MIN);
+    fg.Single(Speech.DUPLICATE, Output.RAISE_VALUE_DUP);
     fg.Complementary(Gestures.BOTH, Speech.PLAYERS, Output.PLAYERS);
     fg.Complementary(Gestures.BOTH, Speech.OPTIONS, Output.OPTIONS);
-    fg.Complementary(Gestures.RAISE, Speech.BETVALUE, Output.RAISE_VALUE);
+    fg.Complementary(Gestures.RAISE, Speech.ALL_IN, Output.RAISE_VALUE_ALL);
+    fg.Complementary(Gestures.RAISE, Speech.MIN, Output.RAISE_VALUE_MIN);
+    fg.Complementary(Gestures.RAISE, Speech.DUPLICATE, Output.RAISE_VALUE_DUP);
 
     fg.Redundancy(Speech.RAISE, Gestures.RAISE, Output.RAISE);
     fg.Redundancy(Speech.BET, Gestures.BET, Output.BET);
