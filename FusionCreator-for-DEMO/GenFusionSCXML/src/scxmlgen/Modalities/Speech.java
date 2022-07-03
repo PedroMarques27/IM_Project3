@@ -16,7 +16,11 @@ public enum Speech implements IModality{
 	CHECK("[action][CHECK]",0),
 	ALL_IN("[action][ALL_IN]",0 ),
 	DUPLICATE("[action][DUPL]",0 ),
-	MIN("[action][MIN]",0 );
+	MIN("[action][MIN]",0 ),
+	CHAT("[action][CHAT]",0),
+	PAUSE("[action][PAUSE]",0),
+	END("[action][END]",0),
+	RESUME("[action][RESUME]",0);
 
 
 private String event; 
