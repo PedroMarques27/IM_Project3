@@ -24,7 +24,6 @@ public class GenFusionSCXML {
 
     FusionGenerator fg = new FusionGenerator();
 
-
     fg.Complementary(SecondMod.BOTH, Speech.PLAYERS, Output.PLAYERS);
     fg.Complementary(SecondMod.BOTH, Speech.OPTIONS, Output.OPTIONS);
     fg.Complementary(SecondMod.RAISE, Speech.ALL_IN, Output.RAISE_VALUE_ALL);
