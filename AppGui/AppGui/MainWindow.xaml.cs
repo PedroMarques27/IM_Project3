@@ -57,8 +57,7 @@ namespace AppGui
             var doc = XDocument.Parse(e.Message);
             var com = doc.Descendants("command").FirstOrDefault().Value;
             dynamic json = JsonConvert.DeserializeObject(com);
-            var commands = json.recognized;
-            Console.WriteLine(commands);
+            Console.WriteLine(json.recognized);
             /*RAISE("[action][RAISE]"),
             BET("[action][BET]"),
             FOLD("[action][FOLD]"),
@@ -77,11 +76,9 @@ namespace AppGui
             {
                 webDriver.FindElement(By.XPath("//div[@class='config-warning-popover']//button")).Click();
             }
-            Console.WriteLine(json.recognized.Length);
-            for (int i = 1; i < commands.Length; i+=2)
+            foreach (String command in json.recognized)
             {
-                Console.WriteLine(commands[i]);
-                switch (commands[i])
+                switch (command)
                 {
                     case "BOTH": //  both arms up
                         try
