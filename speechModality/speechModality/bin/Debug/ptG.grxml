@@ -93,7 +93,7 @@
       <item>tudo</item>
     </one-of>
 
-    <tag>out="ALL_IN"</tag>
+    <tag>out="ALL"</tag>
   </rule>
 
   <rule id="Dupl" scope="public">
