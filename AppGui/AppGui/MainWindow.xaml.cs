@@ -57,8 +57,8 @@ namespace AppGui
             var doc = XDocument.Parse(e.Message);
             var com = doc.Descendants("command").FirstOrDefault().Value;
             dynamic json = JsonConvert.DeserializeObject(com);
-            String command = json.recognized[-1];
-            Console.WriteLine(json.recognized[-1]);
+            var commands = json.recognized;
+            Console.WriteLine(commands);
             /*RAISE("[action][RAISE]"),
             BET("[action][BET]"),
             FOLD("[action][FOLD]"),
@@ -77,100 +77,90 @@ namespace AppGui
             {
                 webDriver.FindElement(By.XPath("//div[@class='config-warning-popover']//button")).Click();
             }
-            switch (command)
+            Console.WriteLine(json.recognized.Length);
+            for (int i = 1; i < commands.Length; i+=2)
             {
-                case "PLAYERS": // PLAYERS - both arms up
-                    try
-                    {
-                        if (webDriver.FindElements(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Count() > 0)
+                Console.WriteLine(commands[i]);
+                switch (commands[i])
+                {
+                    case "BOTH": //  both arms up
+                        try
                         {
-                            webDriver.FindElement(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Click();
+                            if (webDriver.FindElements(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Count() > 0)
+                            {
+                                webDriver.FindElement(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Click();
+                            }
                         }
-                    }
-                    catch { }
-
-                    try
-                    {
-                        IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='config-top-tabs']//button"));
-                        webElements[1].Click();
+                        catch { }
+                        Console.WriteLine("------------");
+                        try
+                        {
+                            IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='config-top-tabs']//button"));
+                            webElements[1].Click();
+                            break;
+                        }
+                        catch { }
                         break;
-                    }
-                    catch { }
-                    break;
-                case "OPTIONS":
-                    try
-                    {
-                        if (webDriver.FindElements(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Count() > 0)
-                        {
-                            webDriver.FindElement(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Click();
-                        }
-                    }
-                    catch { }
 
-                    try
-                    {
-                        IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='config-top-tabs']//button"));
-                        webElements[2].Click();
+                    case "RAISE":
+                        try
+                        {
+                            try
+                            {
+                                string current = webDriver.FindElement(By.XPath("//div[@class='raise-bet-value ']//div[@class='value-input-ctn']//input")).GetAttribute("value");
+                                string money = webDriver.FindElement(By.XPath("//p[@class='blind-value']//span[@class='normal-value']")).GetAttribute("innerHTML");
+                                int value = int.Parse(current) + int.Parse(money);
+
+                                IWebElement element = webDriver.FindElement(By.XPath("//div[@class='value-input-ctn']//input"));
+                                element.Click();
+                                element.Clear();
+                                element.SendKeys(value.ToString());
+                            }
+                            catch { }
+                        }
+                        catch { }
                         break;
-                    }
-                    catch { }
-                    break;
-
-                case "RAISE":
-                    try
-                    {
+                    case "FOLD": // FOLD - stomp leg
                         try
                         {
-                            string current = webDriver.FindElement(By.XPath("//div[@class='raise-bet-value ']//div[@class='value-input-ctn']//input")).GetAttribute("value");
-                            string money = webDriver.FindElement(By.XPath("//p[@class='blind-value']//span[@class='normal-value']")).GetAttribute("innerHTML");
-                            int value = int.Parse(current) + int.Parse(money);
-
-                            IWebElement element = webDriver.FindElement(By.XPath("//div[@class='value-input-ctn']//input"));
-                            element.Click();
-                            element.Clear();
-                            element.SendKeys(value.ToString());
+                            try
+                            {
+                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip fold red ']")).Click();
+                            }
+                            catch { }
                         }
                         catch { }
-                    }
-                    catch { }
-                    break;
-                case "FOLD": // FOLD - stomp leg
-                    try
-                    {
+                        break;
+
+                    case "CHECK": // CHECK - horizontal arm swipe
                         try
                         {
-                            webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip fold red ']")).Click();
+                            try
+                            {
+                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip check green ']")).Click();
+
+                            }
+                            catch { }
                         }
                         catch { }
-                    }
-                    catch { }
-                    break;
+                        break;
 
-                case "CHECK": // CHECK - horizontal arm swipe
-                    try
-                    {
+                    case "BET": // BET - thumbs up
                         try
                         {
-                            webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip check green ']")).Click();
-
+                            try
+                            {
+                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 call with-tip call green ']")).Click();
+                            }
+                            catch { }
                         }
                         catch { }
-                    }
-                    catch { }
-                    break;
-
-                case "BET": // BET - thumbs up
-                    try
-                    {
-                        try
-                        {
-                            webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 call with-tip call green ']")).Click();
-                        }
-                        catch { }
-                    }
-                    catch { }
-                    break;
+                        break;
+                    default:
+                        break;
+                }
             }
+           
         
     }
 
