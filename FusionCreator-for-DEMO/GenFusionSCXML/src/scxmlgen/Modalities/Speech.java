@@ -8,18 +8,15 @@ import scxmlgen.interfaces.IModality;
 
 public enum Speech implements IModality{
 
-
-	PLAYERS("[action][PLAYERS]",1500),
-	OPTIONS("[action][OPTIONS]",1500),
-	RAISE("[action][RAISE]",1500),
-	BET("[action][BET]",1500),
-	FOLD("[action][FOLD]",1500),
-	CHECK("[action][CHECK]",1500),
-	ALL_IN("[action][ALL_IN]",1500 ),
-	DUPLICATE("[action][DUPL]",1500 ),
-	MIN("[action][MIN]",1500 );
-
-
+	PLAYERS("[action][PLAYERS]",0),
+	OPTIONS("[action][OPTIONS]",0),
+	RAISE("[action][RAISE]",0),
+	BET("[action][BET]",0),
+	FOLD("[action][FOLD]",0),
+	CHECK("[action][CHECK]",0),
+	ALL_IN("[action][ALL_IN]",0 ),
+	DUPLICATE("[action][DUPL]",0 ),
+	MIN("[action][MIN]",0 );
 
 
 private String event; 

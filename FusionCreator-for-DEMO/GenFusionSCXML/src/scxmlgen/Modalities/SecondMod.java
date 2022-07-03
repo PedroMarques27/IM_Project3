@@ -6,7 +6,8 @@ import scxmlgen.interfaces.IModality;
  *
  * @author nunof
  */
-public enum Gestures implements IModality{
+public enum SecondMod implements IModality{
+
 
     BOTH("[0][Both]",3500),
     RAISE("[3][Raise]",3500),
@@ -14,13 +15,12 @@ public enum Gestures implements IModality{
     FOLD("[2][Fold]",3500),
     CHECK("[1][Check]",3500);
 
-
-
+    
     private String event;
     private int timeout;
 
 
-    Gestures(String m, int time) {
+    SecondMod(String m, int time) {
         event=m;
         timeout=time;
     }

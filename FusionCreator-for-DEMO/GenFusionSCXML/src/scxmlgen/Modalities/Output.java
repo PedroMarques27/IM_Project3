@@ -5,8 +5,6 @@ import scxmlgen.interfaces.IOutput;
 
 
 public enum Output implements IOutput{
-    
-
 
     RAISE("[action][RAISE]"),
     BET("[action][BET]"),
@@ -17,8 +15,10 @@ public enum Output implements IOutput{
     RAISE_VALUE_MIN("[action][RAISE][value][MIN]"),
     RAISE_VALUE_DUP("[action][RAISE][value][DUPL]"),
     RAISE_VALUE_ALL("[action][RAISE][value][ALL]"),
-    BOTH("[action][BOTH]");
-
+    BOTH("[action][BOTH]")
+    ;
+    
+    
     
     private String event;
 
