@@ -39,17 +39,14 @@ namespace AppGui
             //Creates the ChomeDriver object, Executes tests on Google Chrome
             webDriver = new ChromeDriver(path + @"/driver/");
 
-
+            
 
             mmiC = new MmiCommunication("localhost", 8000, "User1", "GUI");
             mmiC.Message += MmiC_Message;
             mmiC.Start();
 
 
-            fusion = new MmiCommunication("localhost", 9876, "User1", "GUI");
-            fusion.Message += MmiC_Message;
-            fusion.Start();
-
+        
 
 
         }
@@ -58,9 +55,9 @@ namespace AppGui
         {
             Console.WriteLine(e.Message);
             var doc = XDocument.Parse(e.Message);
-            var com = doc.Descendants("command").LastOrDefault().Value;
+            var com = doc.Descendants("command").FirstOrDefault().Value;
             dynamic json = JsonConvert.DeserializeObject(com);
-            Console.WriteLine(com.ToString());
+            Console.WriteLine(json.recognized[1]);
 
 
         }
