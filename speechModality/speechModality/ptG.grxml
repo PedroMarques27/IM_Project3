@@ -195,16 +195,12 @@
       <item>apostar</item>
       <item>aposto</item>
     </one-of>
-    <item>
-      <ruleref uri="#Dinheiro"/>
-      <tag> out.Dinheiro = rules.Dinheiro</tag>
-    </item>
     
     <item repeat="0-1">euros</item>
     <item repeat="0-1">moedas</item>
     <item repeat="0-1">chips</item>
 
-   <tag> out = "RAISE:"+out.Dinheiro</tag>
+   <tag> out = "RAISE"</tag>
   </rule>
   
   

@@ -44,6 +44,11 @@ namespace AppGui
             mmiC = new MmiCommunication("localhost", 8000, "User1", "GUI");
             mmiC.Message += MmiC_Message;
             mmiC.Start();
+
+            //init LifeCycleEvents..
+            lce = new LifeCycleEvents("APP", "TTS", "User1", "na", "command"); // LifeCycleEvents(string source, string target, string id, string medium, string mode
+            // MmiCommunication(string IMhost, int portIM, string UserOD, string thisModalityName)
+            mmic = new MmiCommunication("localhost", 8000, "User1", "GUI");
         }
 
         private void MmiC_Message(object sender, MmiEventArgs e)
@@ -67,21 +72,45 @@ namespace AppGui
             ;*/
 
             string[] repeat = { "Desculpe, não percebi, pode repetir?", "Não o consegui ouvir, pode repetir por favor?", "Poderia repetir se faz favor? Não percebi bem" };
-            Random r = new Random();
-            float confidence = float.Parse(json.confidence[0].ToString());
-            if (0.35 < confidence && confidence < 0.75)
-                sendMessageToTts(repeat[r.Next(0, 2)]);
-            else {
+            
 
             if (webDriver.FindElements(By.XPath("//div[@class='config-warning-popover']//button")).Count() > 0)
             {
                 webDriver.FindElement(By.XPath("//div[@class='config-warning-popover']//button")).Click();
             }
-            foreach (String command in json.recognized)
+            foreach (String c in json.recognized)
             {
+                var command = c.Split(':')[0];
                 switch (command)
                 {
-                    case "BOTH": //  both arms up
+                        case "SIT":
+                            String newbanco = ((String)c.Split(':')[1]).ToString();
+                            String dinheiro = ((String)c.Split(':')[2]).ToString();
+                            if (int.Parse(newbanco) > 10)
+                            {
+                                sendMessageToTts("Peço desculpa, esse banco não existe, escolha um entre 1 e 10");
+                            }
+                            else
+                            {
+
+                                try
+                                {
+                                    webDriver.FindElement(By.XPath("//div[@class='table-player table-player-seat table-player-" + newbanco + "']/button")).Click();
+
+                                    webDriver.FindElement(By.XPath("//input[@placeholder='Your Stack']")).SendKeys(dinheiro);
+                                    IWebElement buttonText = webDriver.FindElement(By.XPath("//button[@class='button-1 med-button highlighted green']"));
+                                    Console.WriteLine(buttonText.GetAttribute("innerHTML"));
+                                    buttonText.Click();
+                                    banco = newbanco;
+                                    sendMessageToTts("Sentado no banco " + newbanco + " com " + dinheiro + " euros");
+                                }
+                                catch
+                                {
+                                    sendMessageToTts("Já estás sentado no banco " + banco);
+                                }
+                            }
+                            break;
+                        case "BOTH": //  both arms up
                         try
                         {
                             if (webDriver.FindElements(By.XPath("//div[@class='top-buttons ']//button[@class='top-buttons-button options ']")).Count() > 0)
@@ -102,23 +131,26 @@ namespace AppGui
                         }
                         catch { }
                         break;
-                    case "RAISE":
+                    case "OPTIONS": //  both arms up
+
                         try
                         {
-                            try
-                            {
-                                string current = webDriver.FindElement(By.XPath("//div[@class='raise-bet-value ']//div[@class='value-input-ctn']//input")).GetAttribute("value");
-                                string money = webDriver.FindElement(By.XPath("//p[@class='blind-value']//span[@class='normal-value']")).GetAttribute("innerHTML");
-                                int value = int.Parse(current) + int.Parse(money);
-
-                                IWebElement element = webDriver.FindElement(By.XPath("//div[@class='value-input-ctn']//input"));
-                                element.Click();
-                                element.Clear();
-                                element.SendKeys(value.ToString());
-                            }
-                            catch { }
+                            IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='config-top-tabs']//button"));
+                            webElements[2].Click();
+                            break;
                         }
                         catch { }
+                        break;
+                    case "RAISE":
+
+                        
+
+                        try
+                        {
+                            webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip raise green']")).Click();
+                        }
+                        catch { }
+                        
                         break;
                     case "FOLD": // FOLD - arm cross and de-cross
                         try
@@ -136,7 +168,7 @@ namespace AppGui
                         {
                             try
                             {
-                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip check green ']")).Click();
+                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button - 1 with - tip check green']")).Click();
 
                             }
                             catch { }
@@ -146,15 +178,12 @@ namespace AppGui
                     case "BET": // BET - thumbs up
                         try
                         {
-                            try
-                            {
-                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 call with-tip call green ']")).Click();
-                            }
-                            catch { }
+                            webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 call with-tip call green ']")).Click();
                         }
                         catch { }
+                      
                         break;
-                    case "RAISE_VALUE_MIN":
+                    case "MIN":
                         try
                         {
                             IWebElement element = webDriver.FindElement(By.XPath("(//div[@class='tableType value'])[0]"));
@@ -163,7 +192,7 @@ namespace AppGui
                         catch { }
 
                         break;
-                    case "RAISE_VALUE_DUP":
+                    case "DUPL":
                         try
                         {
                             string current = webDriver.FindElement(By.XPath("//div[@class='raise-bet-value ']//div[@class='value-input-ctn']//input")).GetAttribute("value");
@@ -177,7 +206,7 @@ namespace AppGui
                         catch { }
 
                         break;
-                    case "RAISE_VALUE_ALL":
+                    case "ALL":
                         try
                         {
                             IWebElement element = webDriver.FindElement(By.XPath("(//div[@class='tableType value'])[4]"));
@@ -185,12 +214,10 @@ namespace AppGui
                         }
                         catch { }
                         break;
-                    case "CHAT":
+                    case "CHATON":
                         if (webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")).Count() > 0)
                         {
-                            switch (((String)json.recognized[0].ToString().Split(':')[1]).ToString())
-                            {
-                                case "0":
+                            
                                     foreach (IWebElement elem in webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")))
                                     {
                                         if (elem.GetAttribute("class").Contains("active"))
@@ -198,39 +225,46 @@ namespace AppGui
                                             elem.Click();
                                         }
                                     }
-                                    break;
-                                case "1":
-                                    var turnedOn = 0;
-                                    foreach (IWebElement elem in webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")))
+                        }
+                        break;
+                    case "CHATOFF":
+                        if (webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")).Count() > 0)
+                        {
+                            
+                                var turnedOn = 0;
+                                foreach (IWebElement elem in webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")))
+                                {
+                                    if (!elem.GetAttribute("class").Contains("active"))
                                     {
-                                        if (!elem.GetAttribute("class").Contains("active"))
-                                        {
-                                            elem.Click();
-                                            turnedOn++;
-                                        }
+                                        elem.Click();
+                                        turnedOn++;
                                     }
-                                    if (turnedOn > 0)
-                                        sendMessageToTts("Atenção, a câmara está a ligar!");
-                                    break;
-                            }
+                                }
+                                if (turnedOn > 0)
+                                    sendMessageToTts("Atenção, a câmara está a ligar!");
+                             
+                            
                         }
                         break;
                     case "PAUSE":
                         if (webDriver.FindElements(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button not-paused']")).Count() > 0)
                             webDriver.FindElement(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button not-paused']")).Click();
                         break;
-                    case "UNPAUSE":
+                    case "RESUME":
                         if (webDriver.FindElements(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button paused']")).Count() > 0)
                             webDriver.FindElement(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button paused']")).Click();
                         break;
                     case "END":
+                        if (webDriver.FindElements(By.XPath("//button[@class='button-1 dark-gray small-button stop-game-button ']")).Count() > 0)
+                            webDriver.FindElement(By.XPath("//button[@class='button-1 dark-gray small-button stop-game-button ']")).Click();
+                        break;
 
                     case "START":
                         try
                         {
                             try
                             {
-                                webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 call with-tip call green ']")).Click();
+                                webDriver.FindElement(By.XPath("//div[@class='out-game-decisions action-buttons']//button[@class='button-1 green highlighted']")).Click();
                             }
                             catch { }
                         }
@@ -239,8 +273,8 @@ namespace AppGui
                     default:
                         break;
                 }
+            
             }
-        }
         }
 
         public void sendMessageToTts(String s)
