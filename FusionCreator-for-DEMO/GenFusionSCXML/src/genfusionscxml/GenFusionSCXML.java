@@ -33,6 +33,14 @@ public class GenFusionSCXML {
     fg.Single(Speech.RAISE, Output.RAISE);
     fg.Single(Speech.CHECK, Output.CHECK);
 
+
+
+    fg.Single(SecondMod.BOTH, Output.PLAYERS);
+    fg.Single(SecondMod.BET, Output.BET);
+    fg.Single(SecondMod.FOLD, Output.FOLD);
+    fg.Single(SecondMod.RAISE, Output.RAISE);
+    fg.Single(SecondMod.CHECK, Output.CHAT);
+
     fg.Complementary(SecondMod.BOTH, Speech.PLAYERS, Output.PLAYERS);
     fg.Complementary(SecondMod.BOTH, Speech.OPTIONS, Output.OPTIONS);
     fg.Complementary(SecondMod.RAISE, Speech.ALL_IN, Output.RAISE_VALUE_ALL);
