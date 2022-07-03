@@ -23,11 +23,7 @@ public class GenFusionSCXML {
     public static void main(String[] args) throws IOException {
 
     FusionGenerator fg = new FusionGenerator();
-    fg.Single(Speech.SIT, Output.SEAT);
-    fg.Single(Speech.CHAT, Output.CHAT);
-    fg.Single(Speech.PAUSE, Output.PAUSE);
-    fg.Single(Speech.END, Output.END);
-    fg.Single(Speech.RESUME, Output.START);
+
 
     fg.Complementary(Gestures.BOTH_UP, Speech.PLAYERS, Output.PLAYERS);
     fg.Complementary(Gestures.BOTH_UP, Speech.OPTIONS, Output.OPTIONS);
