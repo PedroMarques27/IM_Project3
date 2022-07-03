@@ -20,7 +20,8 @@ public enum Speech implements IModality{
 	CHAT("[action][CHAT]",0),
 	PAUSE("[action][PAUSE]",0),
 	END("[action][END]",0),
-	RESUME("[action][RESUME]",0);
+	RESUME("[action][RESUME]",0),
+	START("[action][START]", 0);
 
 
 private String event; 
