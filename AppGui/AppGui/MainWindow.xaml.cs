@@ -26,7 +26,7 @@ namespace AppGui
         private MmiCommunication mmiC;
 
         private LifeCycleEvents lce;
-        private MmiCommunication mmic;
+        private MmiCommunication fusion, mmic;
         private IWebDriver webDriver;
         private String banco;
 
@@ -44,6 +44,11 @@ namespace AppGui
             mmiC = new MmiCommunication("localhost", 8000, "User1", "GUI");
             mmiC.Message += MmiC_Message;
             mmiC.Start();
+
+
+            fusion = new MmiCommunication("localhost", 9876, "User1", "GUI");
+            fusion.Message += MmiC_Message;
+            fusion.Start();
 
 
 
