@@ -78,6 +78,10 @@
         <tag>out.ApTudo=rules.latest();</tag>
       </item>
       <item>
+        <ruleref uri="#Min"/>
+        <tag>out.Min=rules.latest();</tag>
+      </item>
+      <item>
         <ruleref uri="#Dupl"/>
         <tag>out.Dupl=rules.latest();</tag>
       </item>
@@ -192,17 +196,13 @@
   </rule> 
 
   <rule id="Apostar" scope="public">
-    <example> quero apostar  cinco euros</example>
+    <example> quero apostar</example>
 
     <item repeat="0-1">quero</item>
     <one-of>
       <item>apostar</item>
       <item>aposto</item>
     </one-of>
-    
-    <item repeat="0-1">euros</item>
-    <item repeat="0-1">moedas</item>
-    <item repeat="0-1">chips</item>
 
    <tag> out = "RAISE"</tag>
   </rule>
