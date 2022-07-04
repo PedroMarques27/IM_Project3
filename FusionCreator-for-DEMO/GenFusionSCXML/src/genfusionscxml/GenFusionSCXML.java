@@ -24,7 +24,8 @@ public class GenFusionSCXML {
 
     FusionGenerator fg = new FusionGenerator();
 
-    fg.Single(Speech.CHAT, Output.CHAT);
+    fg.Single(Speech.CHATON, Output.CHATON);
+    fg.Single(Speech.CHATOFF, Output.CHATOFF);
     fg.Single(Speech.PAUSE, Output.PAUSE);
     fg.Single(Speech.END, Output.END);
     fg.Single(Speech.RESUME, Output.RESUME);
@@ -34,6 +35,9 @@ public class GenFusionSCXML {
     fg.Single(Speech.RAISE, Output.RAISE);
     fg.Single(Speech.CHECK, Output.CHECK);
 
+    fg.Single(Speech.ALL_IN, Output.RAISE_VALUE_ALL);
+    fg.Single(Speech.MIN, Output.RAISE_VALUE_MIN);
+    fg.Single(Speech.DUPLICATE, Output.RAISE_VALUE_DUP);
 
 
     fg.Single(SecondMod.BOTH, Output.PLAYERS);

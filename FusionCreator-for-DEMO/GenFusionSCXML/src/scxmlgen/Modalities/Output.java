@@ -20,7 +20,11 @@ public enum Output implements IOutput{
     END("[action][END]"),
     START("[action][START]"),
     RESUME("[action][RESUME]"),
-    ;
+    CHATON("[action][CHATON]"),
+    CHATOFF("[action][CHATOFF]"),
+    MIN("[action][MIN]"),
+    DUP("[action][DUPL]"),
+    ALL("[action][ALL]");
     
     
     

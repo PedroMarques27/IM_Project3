@@ -21,7 +21,9 @@ public enum Speech implements IModality{
 	PAUSE("[action][PAUSE]",0),
 	END("[action][END]",0),
 	RESUME("[action][RESUME]",0),
-	START("[action][START]", 0);
+	START("[action][START]", 0),
+	CHATON("[action][CHATON]", 0),
+	CHATOFF("[action][CHATOFF]", 0);
 
 
 private String event; 

@@ -65,8 +65,12 @@
       </item>
       
       <item>
-        <ruleref uri="#VoiceChat"/>
-        <tag>out.VoiceChat=rules.latest();</tag>
+        <ruleref uri="#CHATON"/>
+        <tag>out.CHATON=rules.latest();</tag>
+      </item>
+      <item>
+        <ruleref uri="#CHATOFF"/>
+        <tag>out.CHATOFF=rules.latest();</tag>
       </item>
 
       <item>
@@ -233,29 +237,46 @@
     
   </rule>
   
-  <rule id="VoiceChat" scope="public">
+  <rule id="CHATON" scope="public">
     <example> Liga a câmara</example>
     <example> Inicia o voicechat</example>
 
     <one-of>
-      <item>liga
-      <tag>out.Value = "1"</tag></item>
-      <item>inicia 
-      <tag>out.Value = "1"</tag></item>
+      <item>liga</item>
+      <item>inicia</item>
     
-      <item>desliga
-      <tag>out.Value = "0"</tag></item>
-      <item>sai 
-      <tag>out.Value = "0"</tag></item>
-      <item>termina 
-      <tag>out.Value = "0"</tag></item>
+
     </one-of>
     <one-of>
       <item>a câmara</item>
       <item>o voicechat</item>
     </one-of>
-   <tag> out =  "CHAT"</tag>
+   <tag> out =  "CHATON"</tag>
     
+  </rule>
+  <rule id="CHATOFF" scope="public">
+    <example> Desliga a câmara</example>
+
+    <one-of>
+      
+
+      <item>
+        desliga
+      </item>
+      <item>
+        sai
+      </item>
+      <item>
+        termina
+      </item>
+    </one-of>
+    
+    <one-of>
+      <item>a câmara</item>
+      <item>o voicechat</item>
+    </one-of>
+    <tag> out = "CHATOFF"</tag>
+
   </rule>
   
   <rule id="Despausar" scope="public">
