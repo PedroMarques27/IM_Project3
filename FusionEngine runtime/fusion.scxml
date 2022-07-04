@@ -146,7 +146,7 @@
   <state id="secondmod[0][both]-final">
     <onentry>
       <log label="[secondmod[0][both]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[action][BOTH][type][PLAYERS]')}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[action][PLAYERS]')}" />
       <send event="PLAYERS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
@@ -156,7 +156,7 @@
       <log label="[ssecondmod[0][both]-speech[action][players]]" expr="READY" />
       <assign name="data2" expr="${_eventdata.data}" />
       <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[action][BOTH][type][PLAYERS]')}" />
-      <send event="PLAYERS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <send event="BOTH_PLAYERS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
@@ -165,7 +165,7 @@
       <log label="[ssecondmod[0][both]-speech[action][options]]" expr="READY" />
       <assign name="data2" expr="${_eventdata.data}" />
       <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[action][BOTH][type][OPTIONS]')}" />
-      <send event="OPTIONS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <send event="BOTH_OPTIONS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
@@ -241,7 +241,7 @@
   <state id="speech[action][players]-final">
     <onentry>
       <log label="[speech[action][players]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[action][BOTH][type][PLAYERS]')}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[action][PLAYERS]')}" />
       <send event="PLAYERS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
@@ -251,7 +251,7 @@
       <log label="[sspeech[action][players]-secondmod[0][both]]" expr="READY" />
       <assign name="data2" expr="${_eventdata.data}" />
       <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[action][BOTH][type][PLAYERS]')}" />
-      <send event="PLAYERS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <send event="BOTH_PLAYERS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
@@ -270,7 +270,7 @@
   <state id="speech[action][options]-final">
     <onentry>
       <log label="[speech[action][options]-final]" expr="READY" />
-      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[action][BOTH][type][OPTIONS]')}" />
+      <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF2(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1, '[action][OPTIONS]')}" />
       <send event="OPTIONS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
@@ -280,7 +280,7 @@
       <log label="[sspeech[action][options]-secondmod[0][both]]" expr="READY" />
       <assign name="data2" expr="${_eventdata.data}" />
       <commons:var name="newExtensionNotification" expr="${mmi:newExtensionNotificationF(contextId, 'FUSION', 'IM', mmi:newRequestId(contextId), null, data1,data2, '[action][BOTH][type][OPTIONS]')}" />
-      <send event="OPTIONS" target="IM" targettype="MC" namelist="newExtensionNotification" />
+      <send event="BOTH_OPTIONS" target="IM" targettype="MC" namelist="newExtensionNotification" />
     </onentry>
     <transition target="main" />
   </state>
