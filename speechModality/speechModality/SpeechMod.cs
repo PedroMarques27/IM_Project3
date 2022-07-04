@@ -73,7 +73,7 @@ namespace speechModality
             {
                 
             }
-            else if (e.Result.Confidence < 0.7)
+            else if (e.Result.Confidence < 0.6)
             {
 
                 tts.Speak("Peço desculpa, não percebi bem. Pode repetir?");
