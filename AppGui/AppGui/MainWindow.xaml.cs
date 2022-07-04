@@ -225,6 +225,8 @@ namespace AppGui
                                             elem.Click();
                                         }
                                     }
+
+                                    sendMessageToTts("A ligar a video chamada ");
                         }
                         break;
                     case "CHATOFF":
@@ -248,15 +250,27 @@ namespace AppGui
                         break;
                     case "PAUSE":
                         if (webDriver.FindElements(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button not-paused']")).Count() > 0)
+                        {
                             webDriver.FindElement(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button not-paused']")).Click();
+                            sendMessageToTts("O jogo está em pausa");
+                        }
+                            
                         break;
                     case "RESUME":
                         if (webDriver.FindElements(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button paused']")).Count() > 0)
+                        {
                             webDriver.FindElement(By.XPath("//button[@class='button-1 dark-gray small-button pause-game-button paused']")).Click();
+                            sendMessageToTts("O jogo foi resumido");
+                        }
+                            
                         break;
                     case "END":
                         if (webDriver.FindElements(By.XPath("//button[@class='button-1 dark-gray small-button stop-game-button ']")).Count() > 0)
+                        {
                             webDriver.FindElement(By.XPath("//button[@class='button-1 dark-gray small-button stop-game-button ']")).Click();
+                            sendMessageToTts("Este será o último jogo");
+                        }
+                            
                         break;
 
                     case "START":
