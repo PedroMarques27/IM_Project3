@@ -186,8 +186,8 @@ namespace AppGui
                     case "MIN":
                         try
                         {
-                            IWebElement element = webDriver.FindElement(By.XPath("(//div[@class='tableType value'])[0]"));
-                            element.Click();
+                            IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='default-bet-buttons']//button"));
+                            webElements[0].Click();
                         }
                         catch { }
 
@@ -195,13 +195,8 @@ namespace AppGui
                     case "DUPL":
                         try
                         {
-                            string current = webDriver.FindElement(By.XPath("//div[@class='raise-bet-value ']//div[@class='value-input-ctn']//input")).GetAttribute("value");
-                            int value = Int32.Parse(current) * 2;
-
-                            IWebElement element = webDriver.FindElement(By.XPath("//div[@class='value-input-ctn']//input"));
-                            element.Click();
-                            element.Clear();
-                            element.SendKeys(value.ToString());
+                            IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='default-bet-buttons']//button"));
+                            webElements[3].Click();
                         }
                         catch { }
 
@@ -209,41 +204,41 @@ namespace AppGui
                     case "ALL":
                         try
                         {
-                            IWebElement element = webDriver.FindElement(By.XPath("(//div[@class='tableType value'])[4]"));
-                            element.Click();
+                            IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='default-bet-buttons']//button"));
+                            webElements[4].Click();
                         }
                         catch { }
                         break;
                     case "CHATON":
                         if (webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")).Count() > 0)
                         {
-                            
-                                    foreach (IWebElement elem in webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")))
-                                    {
-                                        if (elem.GetAttribute("class").Contains("active"))
-                                        {
-                                            elem.Click();
-                                        }
-                                    }
 
-                                    sendMessageToTts("A ligar a video chamada ");
+                            var turnedOn = 0;
+                            foreach (IWebElement elem in webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")))
+                                {
+                                    if (!elem.GetAttribute("class").Contains("active"))
+                                    {
+                                        elem.Click();
+                                        turnedOn++;
+                                }
+                                }
+                            if (turnedOn > 0)
+                                sendMessageToTts("Atenção, a câmara está a ligar!");
+
+                            sendMessageToTts("A ligar a video chamada ");
                         }
                         break;
                     case "CHATOFF":
                         if (webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")).Count() > 0)
                         {
                             
-                                var turnedOn = 0;
                                 foreach (IWebElement elem in webDriver.FindElements(By.XPath("//div[@class='conf-controls']//button")))
                                 {
-                                    if (!elem.GetAttribute("class").Contains("active"))
+                                    if (elem.GetAttribute("class").Contains("active"))
                                     {
                                         elem.Click();
-                                        turnedOn++;
                                     }
                                 }
-                                if (turnedOn > 0)
-                                    sendMessageToTts("Atenção, a câmara está a ligar!");
                              
                             
                         }

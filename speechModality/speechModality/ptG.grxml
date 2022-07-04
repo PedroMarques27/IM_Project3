@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0"?>
 <grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
-	<rule id="rootRule" scope="public">
+  <rule id="rootRule" scope="public">
     <one-of>
       <item>Hey Ema</item>
-    
+
       <item>Olá Ema</item>
-    
+
       <item>Ema por favor</item>
     </one-of>
     <one-of>
@@ -13,7 +13,7 @@
         <ruleref uri="#Iniciar"/>
         <tag>out.Iniciar=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Apostar"/>
         <tag>out.Apostar=rules.latest();</tag>
@@ -23,7 +23,7 @@
         <ruleref uri="#Desistir"/>
         <tag>out.Desistir=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Passar"/>
         <tag>out.Passar=rules.latest();</tag>
@@ -33,37 +33,37 @@
         <ruleref uri="#Igualar"/>
         <tag>out.Igualar=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Sentar"/>
         <tag>out.Sentar=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Jogadores"/>
         <tag>out.Jogadores=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Opções"/>
         <tag>out.Opções=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Ausentar"/>
         <tag>out.Ausentar=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Despausar"/>
         <tag>out.Despausar=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#Terminar"/>
         <tag>out.Terminar=rules.latest();</tag>
       </item>
-      
+
       <item>
         <ruleref uri="#CHATON"/>
         <tag>out.CHATON=rules.latest();</tag>
@@ -78,19 +78,20 @@
         <tag>out.ApTudo=rules.latest();</tag>
       </item>
       <item>
-        <ruleref uri="#Min"/>
-        <tag>out.Min=rules.latest();</tag>
-      </item>
-      <item>
         <ruleref uri="#Dupl"/>
         <tag>out.Dupl=rules.latest();</tag>
       </item>
+      <item>
+        <ruleref uri="#ApMin"/>
+        <tag>out.ApMin=rules.latest();</tag>
+      </item>
     </one-of>
-    
+    <item repeat="0-1">o jogo</item>
+
     <item repeat="0-1">por favor</item>
     <item repeat="0-1">se faz favor</item>
-      
-	</rule>
+
+  </rule>
 
   <rule id="ApTudo" scope="public">
     <example> aposto tudo</example>
@@ -105,12 +106,14 @@
   </rule>
 
   <rule id="Dupl" scope="public">
-    <example>duplico a aposta</example>
+    <example>aposto o que está na mesa</example>
 
     <one-of>
-      <item>quero duplicar a aposta</item>
-      <item>quero duplicar</item>
-      <item>duplicar</item>
+      <item>aposto o que está na mesa</item>
+      <item>aposta a mesa</item>
+      <item>iguala a mesa</item>
+      <item>aposto o total</item>
+      <item>duplico</item>
       <item>duplico a aposta</item>
     </one-of>
 
@@ -131,14 +134,14 @@
   </rule>
 
   <rule id="Iniciar" scope="public">
-      <example> começa um novo jogo</example>
-    
-      <one-of>
-			  <item>quero começar um</item>
-			  <item>começa</item>
-			  <item>inicia</item>
-      </one-of>
-  
+    <example> começa um novo jogo</example>
+
+    <one-of>
+      <item>quero começar um</item>
+      <item>começa</item>
+      <item>inicia</item>
+    </one-of>
+
     <item repeat="0-1">novo</item>
     <item repeat="0-1">jogo</item>
     <tag>out="START"</tag>
@@ -161,14 +164,14 @@
     <item repeat="0-1">do jogo</item>
     <tag>out="OPTIONS"</tag>
   </rule>
-  
+
   <rule id="Igualar" scope="public">
     <example> quero igualar</example>
-    
+
     <item repeat="0-1">quero</item>
     <one-of>
-			<item>igualar</item>
-			<item>igualo</item>
+      <item>igualar</item>
+      <item>igualo</item>
     </one-of>
     <tag>out="BET"</tag>
   </rule>
@@ -193,21 +196,29 @@
       <item>passo</item>
     </one-of>
     <tag>out="CHECK"</tag>
-  </rule> 
+  </rule>
 
   <rule id="Apostar" scope="public">
-    <example> quero apostar</example>
+    <example> quero apostar  cinco euros</example>
 
     <item repeat="0-1">quero</item>
     <one-of>
       <item>apostar</item>
       <item>aposto</item>
+      <item>sobe a aposta</item>
+
+      <item>aposta</item>
+      <item>subir</item>
     </one-of>
 
-   <tag> out = "RAISE"</tag>
+    <item repeat="0-1">euros</item>
+    <item repeat="0-1">moedas</item>
+    <item repeat="0-1">chips</item>
+
+    <tag> out = "RAISE"</tag>
   </rule>
-  
-  
+
+
   <rule id="Ausentar" scope="public">
     <example> Espera aí, já venho</example>
 
@@ -220,10 +231,10 @@
       <item>pára</item>
     </one-of>
     <item repeat="0-1">o jogo</item>
-   <tag> out = "PAUSE"</tag>
-    
+    <tag> out = "PAUSE"</tag>
+
   </rule>
-  
+
   <rule id="Terminar" scope="public">
     <example> Termina o jogo</example>
     <example> acaba o jogo</example>
@@ -233,10 +244,10 @@
       <item>acaba</item>
     </one-of>
     <item repeat="0-1">o jogo</item>
-   <tag> out = "END"</tag>
-    
+    <tag> out = "END"</tag>
+
   </rule>
-  
+
   <rule id="CHATON" scope="public">
     <example> Liga a câmara</example>
     <example> Inicia o voicechat</example>
@@ -244,21 +255,22 @@
     <one-of>
       <item>liga</item>
       <item>inicia</item>
-    
+
 
     </one-of>
     <one-of>
       <item>a câmara</item>
       <item>o voicechat</item>
+      <item>a video chamada</item>
     </one-of>
-   <tag> out =  "CHATON"</tag>
-    
+    <tag> out =  "CHATON"</tag>
+
   </rule>
   <rule id="CHATOFF" scope="public">
     <example> Desliga a câmara</example>
 
     <one-of>
-      
+
 
       <item>
         desliga
@@ -270,15 +282,16 @@
         termina
       </item>
     </one-of>
-    
+
     <one-of>
       <item>a câmara</item>
       <item>o voicechat</item>
+      <item>a video chamada</item>
     </one-of>
     <tag> out = "CHATOFF"</tag>
 
   </rule>
-  
+
   <rule id="Despausar" scope="public">
     <example> Mete o jogo</example>
 
@@ -287,9 +300,9 @@
       <item>mete o jogo</item>
       <item>continua</item>
     </one-of>
- 
-   <tag> out = "RESUME"</tag>
-    
+
+    <tag> out = "RESUME"</tag>
+
   </rule>
 
   <rule id="Sentar" scope="public">
@@ -313,7 +326,7 @@
       <ruleref uri="#Dinheiro"/>
       <tag> out.Dinheiro = rules.Dinheiro</tag>
     </item>
-    
+
     <item repeat="0-1">euros</item>
     <item repeat="0-1">moedas</item>
     <item repeat="0-1">chips</item>
@@ -328,15 +341,15 @@
       <item>deixa ver</item>
       <item>mostra</item>
     </one-of>
-    
+
     <one-of>
       <item>os jogadores à espera</item>
       <item>os novos jogadores</item>
     </one-of>
-   
+
     <tag>out="PLAYERS"</tag>
   </rule>
-  
+
   <rule id="Dinheiro">
     <example> cinco </example>
     <example> dez </example>
@@ -414,18 +427,18 @@
       <item>
         quatrocentos <tag> out = 400; </tag>
       </item>
-        <item>
-              quinhentos <tag> out = 500; </tag>
-            </item>
       <item>
-              seiscentos <tag> out = 600; </tag>
-            </item>
+        quinhentos <tag> out = 500; </tag>
+      </item>
       <item>
-              setecentos <tag> out = 700; </tag>
-            </item>
+        seiscentos <tag> out = 600; </tag>
+      </item>
       <item>
-              oitocentos <tag> out = 800; </tag>
-            </item>
+        setecentos <tag> out = 700; </tag>
+      </item>
+      <item>
+        oitocentos <tag> out = 800; </tag>
+      </item>
       <item>
         novecentos <tag> out = 900; </tag>
       </item>
@@ -433,32 +446,32 @@
         mil <tag> out = 1000; </tag>
       </item>
       <item>
-       dois mil <tag> out = 2000; </tag>
+        dois mil <tag> out = 2000; </tag>
       </item>
-    <item>
-       três mil <tag> out = 3000; </tag>
+      <item>
+        três mil <tag> out = 3000; </tag>
       </item>
-<item>
-      quatro  mil <tag> out = 4000; </tag>
+      <item>
+        quatro  mil <tag> out = 4000; </tag>
       </item>
-<item>
-       cinco mil <tag> out = 5000; </tag>
+      <item>
+        cinco mil <tag> out = 5000; </tag>
       </item>
-<item>
-       seis mil <tag> out = 6000; </tag>
+      <item>
+        seis mil <tag> out = 6000; </tag>
       </item>
-<item>
-       sete mil <tag> out = 7000; </tag>
+      <item>
+        sete mil <tag> out = 7000; </tag>
       </item>
-<item>
-       oit mil <tag> out = 8000; </tag>
+      <item>
+        oit mil <tag> out = 8000; </tag>
       </item>
-<item>
-       nove mil <tag> out = 9000; </tag>
+      <item>
+        nove mil <tag> out = 9000; </tag>
       </item>
       <item>
         dez mil <tag> out = 10000; </tag>
-      </item>   
+      </item>
     </one-of>
   </rule>
 
