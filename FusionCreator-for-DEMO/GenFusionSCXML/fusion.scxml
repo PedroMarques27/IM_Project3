@@ -96,7 +96,7 @@
     <onentry>
       <log label="[sspeech[action][players]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[action][players]" event="timeout-sspeech[action][players]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[action][players]" event="timeout-sspeech[action][players]" delay="1500" target="" targettype="" namelist="" />
     </onentry>
     <transition target="main" event="timeout-sspeech[action][players]" />
     <transition target="sspeech[action][players]-secondmod[0][both]" event="[0][Both]" />
@@ -242,7 +242,7 @@
     <onentry>
       <log label="[sspeech[action][all_in]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[action][all_in]" event="timeout-sspeech[action][all_in]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[action][all_in]" event="timeout-sspeech[action][all_in]" delay="1500" target="" targettype="" namelist="" />
     </onentry>
     <transition target="speech[action][all_in]-final" event="timeout-sspeech[action][all_in]" />
     <transition target="sspeech[action][all_in]-secondmod[3][raise]" event="[3][Raise]" />
@@ -310,7 +310,7 @@
     <onentry>
       <log label="[sspeech[action][min]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[action][min]" event="timeout-sspeech[action][min]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[action][min]" event="timeout-sspeech[action][min]" delay="1500" target="" targettype="" namelist="" />
     </onentry>
     <transition target="speech[action][min]-final" event="timeout-sspeech[action][min]" />
     <transition target="sspeech[action][min]-secondmod[3][raise]" event="[3][Raise]" />
@@ -434,7 +434,7 @@
     <onentry>
       <log label="[sspeech[action][options]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[action][options]" event="timeout-sspeech[action][options]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[action][options]" event="timeout-sspeech[action][options]" delay="1500" target="" targettype="" namelist="" />
     </onentry>
     <transition target="main" event="timeout-sspeech[action][options]" />
     <transition target="sspeech[action][options]-secondmod[0][both]" event="[0][Both]" />
@@ -455,7 +455,7 @@
     <onentry>
       <log label="[sspeech[action][dupl]]" expr="READY" />
       <assign name="data1" expr="${_eventdata.data}" />
-      <send id="state1-timer-sspeech[action][dupl]" event="timeout-sspeech[action][dupl]" delay="0" target="" targettype="" namelist="" />
+      <send id="state1-timer-sspeech[action][dupl]" event="timeout-sspeech[action][dupl]" delay="1500" target="" targettype="" namelist="" />
     </onentry>
     <transition target="speech[action][dupl]-final" event="timeout-sspeech[action][dupl]" />
     <transition target="sspeech[action][dupl]-secondmod[3][raise]" event="[3][Raise]" />
