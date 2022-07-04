@@ -23,7 +23,7 @@ public enum Output implements IOutput{
     CHATON("[action][CHATON]"),
     CHATOFF("[action][CHATOFF]"),
     MIN("[action][MIN]"),
-    DUP("[action][DUPL]"),
+    DUPL("[action][DUPL]"),
     ALL("[action][ALL]");
     
     
