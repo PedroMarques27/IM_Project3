@@ -142,9 +142,6 @@ namespace AppGui
                         catch { }
                         break;
                     case "RAISE":
-
-                        
-
                         try
                         {
                             webDriver.FindElement(By.XPath("//div[@class='action-buttons game-decisions']//button[@class='button-1 with-tip raise green']")).Click();
@@ -188,7 +185,7 @@ namespace AppGui
                         {
                             IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='default-bet-buttons']//button"));
                             webElements[0].Click();
-                            webDriver.FindElement(By.XPath("//div[@class='button - 1 green bet']//button")).Click();                            
+                            webDriver.FindElement(By.XPath("//div[@class='action-buttons']//input[@class='button-1 green bet']")).Click();
                         }
                         catch { }
 
@@ -198,7 +195,7 @@ namespace AppGui
                         {
                             IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='default-bet-buttons']//button"));
                             webElements[3].Click();
-                            webDriver.FindElement(By.XPath("//div[@class='button - 1 green bet']//button")).Click();
+                            webDriver.FindElement(By.XPath("//div[@class='action-buttons']//input[@class='button-1 green bet']")).Click();
                         }
                         catch { }
 
@@ -208,7 +205,7 @@ namespace AppGui
                         {
                             IList<IWebElement> webElements = webDriver.FindElements(By.XPath("//div[@class='default-bet-buttons']//button"));
                             webElements[4].Click();
-                            webDriver.FindElement(By.XPath("//div[@class='button - 1 green bet']//button")).Click();
+                            webDriver.FindElement(By.XPath("//div[@class='action-buttons']//input[@class='button-1 green bet']")).Click();
                         }
                         catch { }
                         break;
